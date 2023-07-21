@@ -1,5 +1,14 @@
 version: '3'
 services:
+  postgres:
+    image: postgres:15.3
+    restart: always
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSGRES_PORT
+
   flyway:
     image: flyway/flyway:latest
     container_name: migration_flyway
@@ -11,3 +20,5 @@ services:
     command: -locations=filesystem:/flyway/sql -connectRetries=60 migrate
     volumes:
       - ./sql_migrations:/flyway/sql
+    depends_on:
+      - postgres
