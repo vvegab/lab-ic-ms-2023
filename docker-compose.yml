@@ -1,5 +1,21 @@
 version: '3'
 services:
+  movies-api:
+    container_name: movies_api_container
+    build: 
+      context: ./movies-api
+    image: movies_api
+    command: "/movies-api -b ${BIND_IP} -p ${BIND_PORT}"
+    environment:
+      - BIND_IP
+      - BIND_PORT
+    expose:
+      - ${BIND_PORT}
+    ports:
+      - ${BIND_PORT}:${BIND_PORT}
+    depends_on:
+      - postgres
+
   postgres:
     image: postgres:15.3
     restart: always
@@ -7,7 +23,9 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
-      - POSGRES_PORT
+      - POSTGRES_PORT
+    expose:
+      - ${POSTGRES_PORT}
 
   flyway:
     image: flyway/flyway:latest
