@@ -1,3 +1,5 @@
-const apiServer = 'http://localhost:8000'
+const apiServer = `${process.env.REACT_APP_API_URI}`
+
+console.log('apiserver: ' + apiServer)
 
 export default apiServer
