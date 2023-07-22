@@ -8,7 +8,7 @@ import (
 )
 
 func server(bind, port string) {
-	database.ConnectDb()
+	database.ConnectDb(database.GetDSN())
 
 	app := fiber.New()
 
@@ -22,4 +22,11 @@ func server(bind, port string) {
 func setupRoutes(app *fiber.App) {
 	app.Get("/movies", handlers.ListMovies)
 	app.Get("/movies/:id", handlers.GetMovie)
+	app.Post("/movies", handlers.CreateMovie)
+	app.Put("/movies", handlers.UpdateMovie)
+
+	app.Get("/directors", handlers.ListDirectors)
+	app.Get("/directors/:id", handlers.GetDirector)
+	app.Post("/directors", handlers.CreateDirector)
+	app.Put("/movies", handlers.UpdateMovie)
 }
