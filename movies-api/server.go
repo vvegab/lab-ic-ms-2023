@@ -28,5 +28,5 @@ func setupRoutes(app *fiber.App) {
 	app.Get("/directors", handlers.ListDirectors)
 	app.Get("/directors/:id", handlers.GetDirector)
 	app.Post("/directors", handlers.CreateDirector)
-	app.Put("/movies", handlers.UpdateMovie)
+	app.Put("/directories", handlers.UpdateMovie)
 }
