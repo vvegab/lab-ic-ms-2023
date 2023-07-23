@@ -1,5 +1,17 @@
 version: '3'
 services:
+  movies-front:
+    container_name: movies_front_container
+    build: movies-front
+    command: npm start
+    volumes:
+      - ./movies-front:/usr/app
+      - /usr/app/node_modules
+    ports:
+      - "3000:3000"
+    depends_on:
+      - movies-api
+
   movies-api:
     container_name: movies_api_container
     build: 
@@ -15,6 +27,7 @@ services:
       - ${BIND_PORT}:${BIND_PORT}
     depends_on:
       - postgres
+    restart: always
 
   postgres:
     image: postgres:15.3
