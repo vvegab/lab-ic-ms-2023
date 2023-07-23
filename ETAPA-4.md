@@ -44,13 +44,19 @@ Verifica que el nuevo endpoint `directors` funciona
 
 Nota: Si no tienes `curl` en tu sistema puedes acceder a las urls en tu browser.
 
-Ahora accede a la aplicación a través de tu navegador en la dirección `http://localhost:REACT_PORT` (o la que te indique tu profesor)
+Ahora intenta acceder a la aplicación a través de tu navegador en la dirección `http://localhost:REACT_PORT` (o la que te indique tu profesor).
+
+Este intento va a fallar porque debes configurar el puerto de salida con los atributos `expose` y `ports`.
+
+Para solucionar esto fíjate en cómo lo hacemos con `movies-api`, revisa los atributos `expose` y `ports`  definidos bajo el servicio `movies-api` (lineas 24 a 27 del archivo `docker-compose.yml`).
+
+Reinicia el servicio con `docker-compose up` y trata de acceder otra vez a la aplicación web con el browser.
 
 Podras ver que a pesar de que los endpoints funcionan y retornan los valores esperados, el front-end no muestra datos.
 
 La razón es que falta configurar una variable en el servicio `movies-front`, la variable perdida está definida en el archivo `movies-front/src/const.js`.
 
-El valor que debes dar a esa variable es `http://localhost:BIND_PORT`, donde `BIND_PORT` es el valor que has definido para el servidor `movies-api`. Configura esta variable donde corresponde y reinicia el servicio.
+El valor que debes dar a esa variable es `http://localhost:BIND_PORT`, donde `BIND_PORT` es el valor que has definido para el servidor `movies-api`. Configura esta variable debajo de la variable `PORT` y reinicia el servicio.
 
 Si has configurado todo correctamente vas a ver los valores de las películas y los directores en la aplicación.
 
