@@ -11,7 +11,9 @@ services:
       - "3000:3000"
     depends_on:
       - movies-api
-
+    environment:
+      - PORT=${REACT_PORT}
+   
   movies-api:
     container_name: movies_api_container
     build: 

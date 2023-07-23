@@ -18,17 +18,23 @@ Deten el servicio:
     docker-compose down 
 ```
 
+Configura la variable `REACT_PORT` en tu archivo `.env` con un valor distinto al usado por `movies-api`, por ejemplo: 8001.
+
 Reinicia el servicio:
 
 ```
-    docker-compose up --build -d 
+    docker-compose up -d 
 ```
+
+Fijate que hemos eliminado el parametro --build para no tener que reconstruir innecesariamente todas las imágenes
 
 Verifica que el servidor rest está funcionando:
 
 ```
     curl -v http://localhost:8000/movies
 ```
+
+(Usa el puerto que definiste en la etapa 3)
 
 Verifica que el nuevo endpoint `directors` funciona
 
@@ -38,7 +44,7 @@ Verifica que el nuevo endpoint `directors` funciona
 
 Nota: Si no tienes `curl` en tu sistema puedes acceder a las urls en tu browser.
 
-Ahora accede a la aplicación a través de tu navegador en la dirección `http://localhost:3000`.
+Ahora accede a la aplicación a través de tu navegador en la dirección `http://localhost:REACT_PORT` (o la que te indique tu profesor)
 
 Podras ver que a pesar de que los endpoints funcionan y retornan los valores esperados, el front-end no muestra datos.
 
