@@ -54,16 +54,20 @@ const AddMovie = ({ onHide }) => {
         getDirectors()
     }, [])
 
+    const showModal = () => {
+        getDirectors()
+        props.setOpenModal('default')
+    }
 
 
     return (
         <Fragment>
             <Button
-                onClick={() => props.setOpenModal('default')}
+                onClick={showModal}
                 className="fixed z-90 bottom-10 right-8 rounded-full w-20 h-20">
                 <HiPlusCircle className="w-16 h-16" />
             </Button>
-            <Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)}>
+            <Modal show={props.openModal === 'default'} onClose={() => props.setOpenModal(undefined)} >
                 <Modal.Header>Add a Movie</Modal.Header>
                 <Modal.Body>
                     <Label htmlFor="title" value="Title" />
