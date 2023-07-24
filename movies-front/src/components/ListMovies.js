@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react"
 import { Timeline } from 'flowbite-react';
 
-import apiServer from "../consts"
+import apiServer from "../consts";
 import { TimelineItem } from "flowbite-react/lib/esm/components/Timeline/TimelineItem";
 import AddMovie from "./AddMovie";
 

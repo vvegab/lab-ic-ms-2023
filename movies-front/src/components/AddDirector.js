@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react"
 
-import { Button, Modal, Label, TextInput, Textarea, Select } from 'flowbite-react';
+import { Button, Modal, Label, TextInput } from 'flowbite-react';
 import { HiPlusCircle } from 'react-icons/hi';
 import apiServer from "../consts"
 
@@ -40,6 +40,7 @@ const AddDirector = ({ onHide }) => {
     return (
         <>
             <Button
+                id="add-director-btn"
                 onClick={() => props.setOpenModal('default')}
                 className="fixed z-90 bottom-10 right-8 rounded-full w-20 h-20">
                 <HiPlusCircle className="w-16 h-16" />

@@ -63,6 +63,7 @@ const AddMovie = ({ onHide }) => {
     return (
         <Fragment>
             <Button
+                id="add-movie-btn"
                 onClick={showModal}
                 className="fixed z-90 bottom-10 right-8 rounded-full w-20 h-20">
                 <HiPlusCircle className="w-16 h-16" />

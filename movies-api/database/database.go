@@ -14,7 +14,7 @@ type Dbinstance struct {
 	Db *gorm.DB
 }
 
-var DB Dbinstance
+var DB *Dbinstance
 
 func GetDSN() string {
 	dsn := fmt.Sprintf(
@@ -26,6 +26,12 @@ func GetDSN() string {
 		os.Getenv("POSTGRES_PORT"),
 	)
 	return dsn
+}
+
+func NewDbInstance(db *gorm.DB) *Dbinstance {
+	return &Dbinstance{
+		Db: db,
+	}
 }
 
 func ConnectDb(dsn string) {
@@ -42,7 +48,5 @@ func ConnectDb(dsn string) {
 	log.Println("connected")
 	db.Logger = logger.Default.LogMode(logger.Info)
 
-	DB = Dbinstance{
-		Db: db,
-	}
+	DB = NewDbInstance(db)
 }
