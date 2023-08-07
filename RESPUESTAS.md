@@ -16,10 +16,16 @@ Q:¿Cuál es el comando que se ejecuta en el servicio declarado?
 R:-locations=filesystem:/flyway/sql -connectRetries=60 migrate 
 
 
-Escribe respuestas de la etapa 1 acá
-
 ## ETAPA 2
 
-Escribe respuestas de la etapa 2 acá
+Q:¿Qué pasa si cambias el nombre del servicio de postgres a db? ¿Qué otros cambios tendrías que hacer?
+R: Se debe modificar la referencia al servicio en todos los archivos y configuraciones que utilicen este parámetro
+por ejemplo en el archivo .env en la variable POSTGRES_SERVER, tambien en la opción "depends_on" del archivo docker-compose.yml
+
+
+
+
+
+
 
 ...
