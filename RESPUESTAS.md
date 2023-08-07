@@ -23,7 +23,9 @@ R: Se debe modificar la referencia al servicio en todos los archivos y configura
 por ejemplo en el archivo .env en la variable POSTGRES_SERVER, tambien en la opción "depends_on" del archivo docker-compose.yml
 
 
+## ETAPA 3
 
+:
 
 
 
