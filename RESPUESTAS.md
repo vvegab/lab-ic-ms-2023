@@ -25,8 +25,18 @@ por ejemplo en el archivo .env en la variable POSTGRES_SERVER, tambien en la opc
 
 ## ETAPA 3
 
-:
+Q: Revisa el archivo movies-api/Dockerfile. ¿Qué te llama la atención?
+R: Que existen una serie de comandos que al parecer navegan por los directorios disponibles
+dentro del contenedor y realizan la ejecución de comandos.
 
+Q: ¿Cómo se relacionan el archivo docker-compose.yml y el archivo movies-api/Dockerfile?
+R: Dockerfile contiene comandos que ayudan a levantar una imagen que ejecutará docker-compose y docker-compose es el archivo
+que permite definir y ejecutar multiples aplicaciones en contenedores.
+
+
+Q: ¿Qué crees que hace el atributo context debajo de build (está en la linea 6 del archivo docker-compose.yml)?
+
+R: Le indica el directorio en el cual existe un dockerfile, y donde se deberá levantar la imagen con los comandos asociados.
 
 
 
