@@ -14,13 +14,17 @@ services:
    
   movies-api:
     container_name: movies_api_container
-    build: 
-      context: ./movies-api
+    build: movies-api
     image: movies_api
     command: "/movies-api -b ${BIND_IP} -p ${BIND_PORT}"
     environment:
       - BIND_IP
       - BIND_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_PORT
+      - POSTGRES_SERVER
     expose:
       - ${BIND_PORT}
     ports:
@@ -37,6 +41,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_DB
       - POSTGRES_PORT
+      - POSTGRES_SERVER
     expose:
       - ${POSTGRES_PORT}
 
@@ -48,7 +53,7 @@ services:
       - FLYWAY_PASSWORD=${POSTGRES_PASSWORD}
       - FLYWAY_URL=jdbc:postgresql://${POSTGRES_SERVER}:${POSTGRES_PORT}/${POSTGRES_DB}
       - FLYWAY_GROUP=true
-    command: -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    command: -locations=filesystem:/flyway/sql -connectRetries=120 migrate
     volumes:
       - ./sql_migrations:/flyway/sql
     depends_on:
