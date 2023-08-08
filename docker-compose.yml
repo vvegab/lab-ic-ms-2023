@@ -1,5 +1,6 @@
 version: '3'
 services:
+<<<<<<< HEAD
   movies-api:
     container_name: movies_api_container
     build: 
@@ -16,6 +17,8 @@ services:
     depends_on:
       - postgres
 
+=======
+>>>>>>> main
   postgres:
     image: postgres:15.3
     restart: always
@@ -23,9 +26,12 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
+<<<<<<< HEAD
       - POSTGRES_PORT
     expose:
       - ${POSTGRES_PORT}
+=======
+>>>>>>> main
 
   flyway:
     image: flyway/flyway:latest
@@ -35,8 +41,12 @@ services:
       - FLYWAY_PASSWORD=${POSTGRES_PASSWORD}
       - FLYWAY_URL=jdbc:postgresql://${POSTGRES_SERVER}:${POSTGRES_PORT}/${POSTGRES_DB}
       - FLYWAY_GROUP=true
-    command: -locations=filesystem:/flyway/sql -connectRetries=60 migrate
+    command: -locations=filesystem:/flyway/sql -connectRetries=120 migrate
     volumes:
       - ./sql_migrations:/flyway/sql
     depends_on:
+<<<<<<< HEAD
       - postgres
+=======
+      - postgres
+>>>>>>> main
