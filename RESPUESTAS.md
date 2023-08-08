@@ -39,5 +39,9 @@ Q: ¿Qué crees que hace el atributo context debajo de build (está en la linea 
 R: Le indica el directorio en el cual existe un dockerfile, y donde se deberá levantar la imagen con los comandos asociados.
 
 
+## ETAPA 4
 
+Q:Compara el atributo build del servicio movies-api con el de movies-front. ¿Cuál es la diferencia? ¿Qué pasa si los dejas iguales?
+
+R: Trabajan en distintos directorios, con distintos comandos y tecnologias. La aplicación no funcionaria debido a lo mencionado anteriormente.
 ...
