@@ -1,15 +1,18 @@
 version: '3'
 services:
-<<<<<<< HEAD
   movies-api:
     container_name: movies_api_container
-    build: 
-      context: ./movies-api
+    build: movies-api
     image: movies_api
     command: "/movies-api -b ${BIND_IP} -p ${BIND_PORT}"
     environment:
       - BIND_IP
       - BIND_PORT
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_DB
+      - POSTGRES_PORT
+      - POSTGRES_SERVER
     expose:
       - ${BIND_PORT}
     ports:
@@ -17,8 +20,6 @@ services:
     depends_on:
       - postgres
 
-=======
->>>>>>> main
   postgres:
     image: postgres:15.3
     restart: always
@@ -26,12 +27,10 @@ services:
       - POSTGRES_USER
       - POSTGRES_PASSWORD
       - POSTGRES_DB
-<<<<<<< HEAD
       - POSTGRES_PORT
+      - POSTGRES_SERVER
     expose:
       - ${POSTGRES_PORT}
-=======
->>>>>>> main
 
   flyway:
     image: flyway/flyway:latest
@@ -45,8 +44,4 @@ services:
     volumes:
       - ./sql_migrations:/flyway/sql
     depends_on:
-<<<<<<< HEAD
       - postgres
-=======
-      - postgres
->>>>>>> main
